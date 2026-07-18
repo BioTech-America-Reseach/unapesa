@@ -1,0 +1,232 @@
+<!doctype html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MFUMO PRO - VUNA PESA MTANDAONI</title>
+  
+  <!-- Tailwind & Fonts -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: #020617;
+      color: white;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Background ya Kifahari */
+    .hero-bg {
+      background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), 
+                  url('https://images.unsplash.com/photo-1611974714676-48d611681788?auto=format&fit=crop&q=80&w=2000');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      min-height: 100vh;
+    }
+
+    /* Glass Effect (Muonekano wa Pro) */
+    .glass-box {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 24px;
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+    }
+    .animate-float { animation: float 4s ease-in-out infinite; }
+
+    @keyframes pulse-green {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
+      50% { box-shadow: 0 0 40px 10px rgba(34, 197, 94, 0.3); }
+    }
+    .btn-glow { animation: pulse-green 2s infinite; }
+
+    .money-rain {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1;
+      font-size: 24px;
+      animation: fall linear forwards;
+    }
+    @keyframes fall {
+      to { transform: translateY(110vh) rotate(360deg); }
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, #4ade80, #22c55e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  </style>
+</head>
+<body class="hero-bg">
+
+  <!-- Hapa ndipo Pesa Zinadondoka -->
+  <div id="rain-zone"></div>
+
+  <main class="relative z-10 max-w-xl mx-auto px-5 py-10">
+    
+    <!-- Header/Logo Section -->
+    <header class="text-center mb-12 animate-float">
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-green-500/10 rounded-3xl border border-green-500/30 mb-4 shadow-2xl">
+        <i data-lucide="gem" class="text-green-400 w-10 h-10"></i>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-extrabold uppercase tracking-tight leading-tight">
+        Mfumo wa <span class="gradient-text">Kuvuna Faida</span> Mtandaoni
+      </h1>
+      <p class="text-gray-400 mt-3 text-xs tracking-[0.2em] font-semibold">PREMIUM EARNING SYSTEM 2024</p>
+    </header>
+
+    <!-- Live Profit Counter -->
+    <div class="glass-box p-8 mb-10 text-center relative overflow-hidden border-t-2 border-green-500/50">
+        <p class="text-green-400 text-xs font-bold uppercase tracking-widest mb-4">Pesa zilizovunwa na watumiaji leo:</p>
+        <div id="counter" class="text-4xl md:text-5xl font-black text-white tabular-nums mb-3 tracking-tighter">
+            TZS 12,450,000
+        </div>
+        <div class="flex items-center justify-center gap-2 text-green-500/80 text-xs font-medium">
+            <span class="flex h-2 w-2">
+              <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+            </span>
+            SYSTEM ONLINE & UPDATING LIVE
+        </div>
+    </div>
+
+    <!-- MAIN CALL TO ACTION -->
+    <div class="mb-14">
+        <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
+           class="btn-glow block w-full py-6 rounded-2xl bg-gradient-to-r from-green-600 to-emerald-500 text-white font-black text-xl text-center shadow-2xl transition-all active:scale-95">
+           BONYEZA HAPA KUANZA SASA 🚀
+        </a>
+        <p class="text-center text-gray-500 text-[11px] mt-4 uppercase font-bold italic tracking-wide">
+           *Bonyeza link hapo juu kupata Bonus yako ya TZS 60,000/-
+        </p>
+    </div>
+
+    <!-- DETAILED INSTRUCTIONS (KUELEWEKA KWA KINA) -->
+    <section class="glass-box p-6 md:p-8 space-y-10 mb-12">
+        <div class="flex items-center gap-3 border-b border-white/10 pb-5">
+            <i data-lucide="file-text" class="text-green-400"></i>
+            <h2 class="font-extrabold text-xl">MAELEZO YA KINA (HAKIKISHA UNASOMA)</h2>
+        </div>
+
+        <!-- Step 1 -->
+        <div class="flex gap-5">
+            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">1</div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Kwanza: Usajili</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Bonyeza kitufe kikubwa cha kijani hapo juu. Utapelekwa kwenye ukurasa wa kampuni. Jaza namba yako ya simu na nenosiri (password) imara. Kumbuka namba yako ndiyo itatumika kukutumia faida yako kupitia M-pesa au Tigo-Pesa.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="flex gap-5">
+            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">2</div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Pili: Pokea Mtaji (60k)</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Ukishamaliza kusajili, ingia kwenye akaunti yako. Chini kabisa kulia bofya kitufe cha <b>'ME'</b>. Utapewa TZS 30,000 ya Sport na TZS 30,000 ya Casino. Hii ni pesa ya bure kabisa ya kuanzia kulingana na mfumo wetu.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="flex gap-5">
+            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">3</div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Tatu: Matumizi ya AI</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Tumia pesa hizo za bonus kucheza. Mfumo wetu una AI (Akili Bandia) ambayo imesetiwa kukupa ushindi wa haraka. Ukicheza kwa dakika chache, utaona salio lako likipanda kuelekea <b>TZS 280,000</b>.
+                </p>
+            </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="flex gap-5">
+            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">4</div>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Nne: Kutoa Pesa</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">
+                    Ukifikisha faida unayoitaka, omba kutoa pesa (Withdraw). Ikiwa mfumo utahitaji uhakiki, weka kiasi kidogo (kama TZS 10,000) kwenye akaunti yako ili kufungua (Unlock) bonus yote. Hapo utaweza kutoa pesa zako zote kwa pamoja.
+                </p>
+            </div>
+        </div>
+
+        <!-- Warning Card -->
+        <div class="bg-red-500/10 border border-red-500/20 p-5 rounded-2xl">
+            <div class="flex items-center gap-2 mb-2">
+                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5"></i>
+                <span class="text-red-500 font-bold text-sm uppercase">Zingatia Hili</span>
+            </div>
+            <p class="text-gray-300 text-xs leading-relaxed">
+                Mfumo huu ni kwa ajili ya kutengeneza faida ya ziada. Tunashauri kutoa faida yako kila unapofikisha kiasi kikubwa. Usicheze kwa tamaa, cheza kwa malengo.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center pb-20">
+        <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
+           class="inline-flex items-center gap-2 text-green-400 font-bold hover:text-green-300 transition-colors uppercase tracking-widest text-sm">
+            NIMEWELEWA, NAANZA SASA 
+            <i data-lucide="chevron-right" class="w-5 h-5"></i>
+        </a>
+        <div class="mt-8 text-gray-600 text-[10px] uppercase tracking-[0.3em]">
+            &copy; 2026 Pesa Pro Tanzania | Secure Connection
+        </div>
+    </footer>
+
+  </main>
+
+  <!-- Scripts -->
+  <script>
+    // Initialize Icons
+    lucide.createIcons();
+
+    // Counter Logic (TZS)
+    let amount = 12450000;
+    const counterEl = document.getElementById('counter');
+    
+    function updateCounter() {
+      const addition = Math.floor(Math.random() * 85000) + 5000;
+      amount += addition;
+      counterEl.textContent = 'TZS ' + amount.toLocaleString('en-US');
+      setTimeout(updateCounter, 2500 + Math.random() * 2000);
+    }
+    updateCounter();
+
+    // Money Rain Logic
+    const rainZone = document.getElementById('rain-zone');
+    const icons = ['💵', '💰', '💸', '💎'];
+
+    function createRain() {
+      const drop = document.createElement('div');
+      drop.className = 'money-rain';
+      drop.textContent = icons[Math.floor(Math.random() * icons.length)];
+      drop.style.left = Math.random() * 100 + 'vw';
+      drop.style.top = '-50px';
+      
+      const duration = 4 + Math.random() * 4;
+      drop.style.animationDuration = duration + 's';
+      drop.style.opacity = Math.random();
+      
+      rainZone.appendChild(drop);
+      
+      setTimeout(() => drop.remove(), duration * 1000);
+    }
+
+    setInterval(createRain, 500);
+  </script>
+</body>
+</html>
