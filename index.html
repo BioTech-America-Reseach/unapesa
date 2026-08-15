@@ -7,7 +7,7 @@
   
   <!-- Tailwind & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <style>
@@ -20,43 +20,58 @@
 
     body { 
       font-family: 'Plus Jakarta Sans', sans-serif;
-      color: white;
+      color: #ffffff;
       overflow-x: hidden;
       background: #0a0a1a;
       min-height: 100vh;
     }
 
-    /* ===================== STATIC LUXURY BACKGROUND ===================== */
+    /* ===================== LUXURY BACKGROUND ===================== */
     .hero-bg {
-      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 30%, #0d1a2d 60%, #1a0a2e 100%);
+      background: 
+        radial-gradient(ellipse at 20% 30%, rgba(255, 215, 0, 0.08) 0%, transparent 60%),
+        radial-gradient(ellipse at 80% 70%, rgba(255, 215, 0, 0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(10, 10, 30, 0.95) 0%, rgba(10, 10, 30, 1) 100%),
+        linear-gradient(180deg, #0a0a1a 0%, #1a0a2e 25%, #0d1a2d 50%, #1a0a2e 75%, #0a0a1a 100%);
+      background-attachment: fixed;
       min-height: 100vh;
       position: relative;
-      background-image: 
-        radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
-        radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.02) 0%, transparent 40%),
-        radial-gradient(ellipse at 50% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
-      background-attachment: fixed;
+    }
+
+    /* Gold Glow overlay */
+    .hero-bg::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: 
+        radial-gradient(ellipse at 50% 0%, rgba(255, 215, 0, 0.03) 0%, transparent 70%),
+        radial-gradient(ellipse at 50% 100%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+      pointer-events: none;
+      z-index: 0;
     }
 
     /* ===================== LUXURY GOLD BORDER ===================== */
     .luxury-border {
-      border: 1px solid rgba(255, 215, 0, 0.1);
-      box-shadow: 0 0 60px rgba(255, 215, 0, 0.02);
+      border: 1px solid rgba(255, 215, 0, 0.12);
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.03);
     }
 
     /* ===================== GLASS EFFECT ===================== */
     .glass-box {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 255, 255, 0.06);
       border-radius: 20px;
     }
 
     .glass-gold {
-      background: rgba(255, 215, 0, 0.03);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(255, 215, 0, 0.04);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
       border: 1px solid rgba(255, 215, 0, 0.08);
       border-radius: 20px;
     }
@@ -70,7 +85,7 @@
 
     @keyframes pulse-gold {
       0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
-      50% { box-shadow: 0 0 50px 15px rgba(255, 215, 0, 0.1); }
+      50% { box-shadow: 0 0 50px 15px rgba(255, 215, 0, 0.15); }
     }
     .btn-glow { animation: pulse-gold 2s infinite; }
 
@@ -83,13 +98,8 @@
       background-size: 300% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      background-clip: text;
       animation: gold-shimmer 3s linear infinite;
-    }
-
-    @keyframes gradient-shift {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
 
     /* ===================== BEAM EFFECT ===================== */
@@ -104,7 +114,7 @@
       left: -50%;
       width: 200%;
       height: 200%;
-      background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.03), transparent, rgba(255, 215, 0, 0.03), transparent);
+      background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.04), transparent, rgba(255, 215, 0, 0.04), transparent);
       animation: rotate-beam 15s linear infinite;
     }
     @keyframes rotate-beam {
@@ -116,29 +126,27 @@
       z-index: 1;
     }
 
-    /* ===================== LOVE RAIN (Instagram Style) ===================== */
+    /* ===================== LOVE RAIN ===================== */
     .love-rain {
       position: fixed;
       pointer-events: none;
       z-index: 999;
       font-size: 28px;
       animation: love-fall linear forwards;
-      opacity: 0.8;
+      opacity: 0.7;
     }
     @keyframes love-fall {
       0% { 
-        transform: translateY(-20px) scale(0.5) rotate(0deg);
+        transform: translateY(-20px) scale(0.3) rotate(0deg);
         opacity: 0;
       }
       10% { 
         opacity: 1;
-        transform: translateY(10px) scale(1.2) rotate(10deg);
+        transform: translateY(10px) scale(1.1) rotate(10deg);
       }
-      90% { 
-        opacity: 1;
-      }
+      90% { opacity: 1; }
       100% { 
-        transform: translateY(110vh) scale(0.8) rotate(360deg);
+        transform: translateY(110vh) scale(0.7) rotate(360deg);
         opacity: 0;
       }
     }
@@ -168,7 +176,7 @@
       align-items: center;
       padding: 10px 14px;
       margin: 5px 0;
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 12px;
       border-left: 2px solid rgba(255, 215, 0, 0.15);
       animation: slideIn 0.4s ease-out forwards;
@@ -181,14 +189,14 @@
     }
 
     .winner-name {
-      font-weight: 600;
+      font-weight: 700;
       color: #f0f0f0;
-      font-size: 0.9rem;
+      font-size: 0.95rem;
     }
     .winner-amount {
       font-weight: 800;
       color: #ffd700;
-      font-size: 0.95rem;
+      font-size: 1rem;
     }
     .winner-location {
       color: #9ca3af;
@@ -207,8 +215,8 @@
     /* ===================== LIVE DOT ===================== */
     .live-dot {
       display: inline-block;
-      width: 7px;
-      height: 7px;
+      width: 8px;
+      height: 8px;
       background: #22c55e;
       border-radius: 50%;
       animation: pulse-dot 1.5s ease-in-out infinite;
@@ -221,10 +229,10 @@
 
     /* ===================== STEP CARDS ===================== */
     .step-card {
-      background: rgba(255, 255, 255, 0.02);
+      background: rgba(255, 255, 255, 0.03);
       border-radius: 14px;
       padding: 14px 16px;
-      border: 1px solid rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.06);
       transition: all 0.3s ease;
     }
     .step-card:active {
@@ -232,42 +240,18 @@
       background: rgba(255, 215, 0, 0.03);
     }
     .step-number {
-      width: 32px;
-      height: 32px;
-      background: rgba(255, 215, 0, 0.1);
+      width: 34px;
+      height: 34px;
+      background: rgba(255, 215, 0, 0.12);
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
       font-weight: 800;
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: #ffd700;
       border: 1px solid rgba(255, 215, 0, 0.15);
       flex-shrink: 0;
-    }
-
-    /* ===================== RESPONSIVE ===================== */
-    @media (max-width: 480px) {
-      .winner-item {
-        padding: 8px 10px;
-        font-size: 0.8rem;
-      }
-      .winner-name { font-size: 0.8rem; }
-      .winner-amount { font-size: 0.8rem; }
-      .winner-badge { font-size: 0.5rem; padding: 1px 8px; }
-      .step-card { padding: 12px 14px; }
-      .hero-title { font-size: 1.8rem; }
-      .jackpot-number { font-size: 2.2rem; }
-      .love-rain { font-size: 22px; }
-    }
-
-    @media (max-width: 380px) {
-      .winner-item { padding: 6px 8px; }
-      .winner-name { font-size: 0.7rem; }
-      .winner-amount { font-size: 0.7rem; }
-      .winner-location { font-size: 0.6rem; }
-      .step-card { padding: 10px 12px; }
-      .step-number { width: 28px; height: 28px; font-size: 0.7rem; }
     }
 
     /* ===================== TAP EFFECT ===================== */
@@ -279,18 +263,56 @@
       animation: tap-pop 0.6s ease-out forwards;
     }
     @keyframes tap-pop {
-      0% { transform: scale(0.5); opacity: 1; }
-      100% { transform: scale(1.8); opacity: 0; }
+      0% { transform: scale(0.3); opacity: 1; }
+      100% { transform: scale(2); opacity: 0; }
     }
 
     /* ===================== GOLD STARS ===================== */
     .gold-star {
-      color: rgba(255, 215, 0, 0.1);
+      color: rgba(255, 215, 0, 0.08);
       animation: twinkle 3s ease-in-out infinite;
     }
     @keyframes twinkle {
       0%, 100% { opacity: 0.1; }
-      50% { opacity: 0.5; }
+      50% { opacity: 0.4; }
+    }
+
+    /* ===================== JACKPOT ===================== */
+    .jackpot-number {
+      font-size: 3.2rem;
+      font-weight: 900;
+      letter-spacing: -1px;
+      line-height: 1.2;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 480px) {
+      .winner-item { padding: 8px 10px; }
+      .winner-name { font-size: 0.8rem; }
+      .winner-amount { font-size: 0.8rem; }
+      .winner-badge { font-size: 0.5rem; padding: 1px 8px; }
+      .step-card { padding: 12px 14px; }
+      .hero-title { font-size: 1.5rem; }
+      .jackpot-number { font-size: 2.4rem; }
+      .love-rain { font-size: 22px; }
+    }
+
+    @media (max-width: 380px) {
+      .winner-item { padding: 6px 8px; }
+      .winner-name { font-size: 0.7rem; }
+      .winner-amount { font-size: 0.7rem; }
+      .winner-location { font-size: 0.6rem; }
+      .step-card { padding: 10px 12px; }
+      .step-number { width: 28px; height: 28px; font-size: 0.7rem; }
+      .jackpot-number { font-size: 2rem; }
+    }
+
+    /* ===================== TEXT SHADOW FOR READABILITY ===================== */
+    .text-shadow {
+      text-shadow: 0 2px 20px rgba(0,0,0,0.5);
+    }
+    .text-shadow-gold {
+      text-shadow: 0 2px 30px rgba(255, 215, 0, 0.15);
     }
   </style>
 </head>
@@ -306,86 +328,90 @@
 
     <!-- ===================== HEADER ===================== -->
     <header class="text-center mb-6 animate-float">
-      <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-2xl border border-yellow-500/30 mb-3 shadow-2xl">
-        <i data-lucide="gem" class="text-yellow-400 w-8 h-8"></i>
+      <div class="inline-flex items-center justify-center w-20 h-20 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-2xl border border-yellow-500/30 mb-3 shadow-2xl">
+        <i data-lucide="gem" class="text-yellow-400 w-10 h-10"></i>
       </div>
-      <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight hero-title">
-        VUNA FAIDA NA KAMPUNI ZA<span class="gold-text"> BAHATI NASIBU HATA BILA KUCHEZA</span>
+      <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight hero-title text-shadow">
+        VUNA FAIDA NA KAMPUNI ZA<br>
+        <span class="gold-text">BAHATI NASIBU</span>
+        <span class="text-white font-light">HATA BILA KUCHEZA</span>
       </h1>
-      <p class="text-gray-400 mt-1 text-[10px] tracking-[0.15em] font-semibold">IMEANZISHWA TOKA MWAKA 1998 -2026</p>
+      <p class="text-yellow-500/70 mt-1 text-[11px] tracking-[0.15em] font-semibold">IMEANZISHWA TOKA MWAKA 1998 - 2026</p>
       <div class="flex items-center justify-center gap-2 mt-2">
         <span class="live-dot"></span>
         <span class="text-green-400 text-[10px] font-bold tracking-widest">LIVE • WATU 2,847 WAMEJIUNGA MWEZI HUU</span>
       </div>
     </header>
 
-    <!-- ===================== MWONGOZO (Juu Kabla ya Washindi) ===================== -->
+    <!-- ===================== MWONGOZO (SOMA KWANZA) ===================== -->
     <div class="beam-container glass-gold p-5 mb-6 luxury-border">
       <div class="beam"></div>
       <div class="beam-content">
         <div class="flex items-center gap-2 border-b border-yellow-500/10 pb-3 mb-4">
-          <i data-lucide="zap" class="text-yellow-400 w-4 h-4"></i>
-          <h2 class="font-extrabold text-sm gold-text uppercase tracking-wider">📌SOMA KWANZA</h2>
+          <i data-lucide="book-open" class="text-yellow-400 w-4 h-4"></i>
+          <h2 class="font-extrabold text-sm gold-text uppercase tracking-wider">📌 SOMA KWANZA - MWONGOZO WA KUANZA</h2>
         </div>
         
         <div class="space-y-3">
           <!-- Step 1 -->
-          <div class="step-card flex items-center gap-3">
-            <span class="step-number">1</span>
+          <div class="step-card flex items-start gap-3">
+            <span class="step-number mt-0.5">1</span>
             <div class="flex-1 min-w-0">
-              <p class="text-white font-semibold text-sm">BONYEZA KITUFE CHA KUJIUNGA</p>
-              <p class="text-gray-400 text-[10px]">Pata bonasi yako ya TZS 60,000 bure hata bila kucheza</p>
+              <p class="text-white font-bold text-sm">BONYEZA KITUFE CHA KUJIUNGA</p>
+              <p class="text-gray-300 text-[11px]">Pata bonasi yako ya TZS 60,000 bure hata bila kucheza</p>
             </div>
           </div>
           
           <!-- Step 2 -->
-          <div class="step-card flex items-center gap-3">
-            <span class="step-number">2</span>
+          <div class="step-card flex items-start gap-3">
+            <span class="step-number mt-0.5">2</span>
             <div class="flex-1 min-w-0">
-              <p class="text-white font-semibold text-sm">JISAJIRI KAMA NDIO MARA YAO YA KWANZA</p>
-              <p class="text-gray-400 text-[10px]">Jaza namba simu na weka lako la nenosiri</p>
+              <p class="text-white font-bold text-sm">JISAJIRI KAMA NDIO MARA YAO YA KWANZA</p>
+              <p class="text-gray-300 text-[11px]">Jaza namba simu na weka lako la nenosiri</p>
             </div>
           </div>
           
           <!-- Step 3 -->
-          <div class="step-card flex items-center gap-3">
-            <span class="step-number">3</span>
+          <div class="step-card flex items-start gap-3">
+            <span class="step-number mt-0.5">3</span>
             <div class="flex-1 min-w-0">
-              <p class="text-white font-semibold text-sm">Baada ya jusajiri utaona BONUS yako ya kwanza 10,000 kisha zinongezwa hadili unavyocheza</p>
-              <p class="text-gray-400 text-[10px]">Tumia AI kuongeza faida hadi 280k+</p>
+              <p class="text-white font-bold text-sm">BAADA YA KUJIUNGA UTAONA BONUS YAKO</p>
+              <p class="text-gray-300 text-[11px]">Bonus ya kwanza 10,000 kisha inaongezeka hadi unavyocheza</p>
             </div>
           </div>
           
           <!-- Step 4 -->
-          <div class="step-card flex items-center gap-3">
-            <span class="step-number">4</span>
+          <div class="step-card flex items-start gap-3">
+            <span class="step-number mt-0.5">4</span>
             <div class="flex-1 min-w-0">
-              <p class="text-white font-semibold text-sm">JITAIDI KUTOA PESA UKIANZA KUONA FAIDA IMEONGEZEKA</p>
-              <p class="text-gray-400 text-[10px]">Jiepushe na tamaa maana hizi pesa ni kivutio usicheze sana ukajisahau.</p>
+              <p class="text-white font-bold text-sm">JITAIDI KUTOA PESA UKIANZA KUONA FAIDA</p>
+              <p class="text-gray-300 text-[11px]">Jiepushe na tamaa maana hizi pesa ni kivutio, usicheze sana ukajisahau.</p>
             </div>
           </div>
         </div>
 
         <div class="mt-4 p-3 bg-yellow-500/5 border border-yellow-500/15 rounded-xl">
-          <p class="text-yellow-400/80 text-[9px] font-bold uppercase tracking-wider text-center">
+          <p class="text-yellow-400/90 text-[9px] font-bold uppercase tracking-wider text-center">
             ⚡ WATU 1,284 WAMEPATA FAIDA LEO! USICHELEWA ⚡
           </p>
         </div>
       </div>
     </div>
 
-    <!-- ===================== JACKPOT COUNTER ===================== -->
+    <!-- ===================== SANDUKU LA HELA (JACKPOT) ===================== -->
     <div class="glass-gold p-5 mb-6 text-center luxury-border relative overflow-hidden">
       <div class="relative z-10">
-        <p class="text-yellow-500/70 text-[10px] font-bold uppercase tracking-[0.15em] mb-1">
+        <p class="text-yellow-500/80 text-[10px] font-bold uppercase tracking-[0.15em] mb-1">
           🏆 KIASI KINACHOENDELEA KUCHOTWA FREE
         </p>
-        <div id="jackpot" class="text-3xl md:text-4xl font-black gold-text">TZS 7,450,000</div>
-        <p class="text-gray-500 text-[8px] mt-1 tracking-widest">MTU AMETOA PESA MDAA HUU</p>
-        <div class="flex justify-center gap-3 mt-2">
-          <span class="text-[9px] text-gray-400">  1,284 wamepata</span>
-          <span class="text-[9px] text-gray-400">💎 Bonasi: 280,000</span>
+        <div id="jackpot" class="jackpot-number gold-text text-shadow-gold">TZS 7,450,000</div>
+        <p class="text-gray-400 text-[9px] mt-1 tracking-widest">MTU AMETOA PESA MDAO HUU</p>
+        <div class="flex justify-center gap-4 mt-2">
+          <span class="text-[10px] text-gray-400">👥 1,284 wamepata</span>
+          <span class="text-[10px] text-gray-400">💎 Bonasi: 280,000</span>
         </div>
+        <!-- Glow line at bottom -->
+        <div class="absolute bottom-0 left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-yellow-500/30 to-transparent"></div>
       </div>
     </div>
 
@@ -409,8 +435,8 @@
     <div class="mb-6">
       <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
          class="btn-glow block w-full py-5 rounded-2xl bg-gradient-to-r from-yellow-500 to-amber-500 text-white font-black text-base md:text-lg text-center shadow-2xl transition-all active:scale-95 hover:scale-102 relative overflow-hidden">
-        <span class="relative z-10">🚀 JIUNGE SASA NA ANZA KUVUNA 🚀</span>
-        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700"></span>
+        <span class="relative z-10 text-shadow">🚀 JIUNGE SASA NA ANZA KUVUNA 🚀</span>
+        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700"></span>
       </a>
       <p class="text-center text-gray-500 text-[8px] mt-2 uppercase font-bold italic tracking-wider">
         *BONASI YAKO YA TZS 60,000 INAKUSUBIRI*
@@ -419,8 +445,8 @@
 
     <!-- ===================== ROTATING PRO TEXT ===================== -->
     <div class="text-center mb-4">
-      <div class="inline-block animate-float text-lg font-black gold-text">
-      KAMPUNI IMESAJIRI TANZANIA KWA LESENI NAMBA BS823-3838 NI HALALI 
+      <div class="inline-block animate-float text-sm font-bold gold-text">
+        KAMPUNI IMESAJIRI TANZANIA KWA LESENI NAMBA BS823-3838 NI HALALI
       </div>
     </div>
 
@@ -431,7 +457,7 @@
         🚀 NIMEWELEWA, NAANZA SASA
         <i data-lucide="chevron-right" class="w-3 h-3"></i>
       </a>
-      <div class="mt-4 text-gray-600 text-[8px] uppercase tracking-[0.15em]">
+      <div class="mt-4 text-gray-500 text-[8px] uppercase tracking-[0.15em]">
         &copy; 2026 Pesa Pro Tanzania | Secure Connection
       </div>
       <div class="mt-2 flex justify-center gap-2 text-sm">
@@ -451,11 +477,11 @@
     lucide.createIcons();
 
     // ===================== JACKPOT COUNTER =====================
-    let jackpotAmount = 12450000;
+    let jackpotAmount = 7450000;
     const jackpotEl = document.getElementById('jackpot');
 
     function updateJackpot() {
-      const addition = Math.floor(Math.random() * 120000) + 20000;
+      const addition = Math.floor(Math.random() * 150000) + 25000;
       jackpotAmount += addition;
       jackpotEl.textContent = 'TZS ' + jackpotAmount.toLocaleString('en-US');
       setTimeout(updateJackpot, 2000 + Math.random() * 1500);
@@ -563,7 +589,7 @@
       
       if (amountSpan) {
         const currentAmount = parseInt(amountSpan.textContent.replace(/[^\d]/g, ''));
-        const increase = Math.floor(Math.random() * 12000) + 3000;
+        const increase = Math.floor(Math.random() * 15000) + 3000;
         const newAmount = currentAmount + increase;
         amountSpan.textContent = 'TZS ' + newAmount.toLocaleString('en-US');
       }
@@ -571,9 +597,9 @@
 
     setInterval(updateRandomWinner, 3000 + Math.random() * 2000);
 
-    // ===================== LOVE RAIN (Instagram Style) =====================
+    // ===================== LOVE RAIN =====================
     const loveZone = document.getElementById('love-rain-zone');
-    const loveEmojis = ['❤️', '💕', '💗', '💖', '💘', '♥️'];
+    const loveEmojis = ['❤️', '💕', '💗', '💖', '💘', '♥️', '🩷', '💝'];
 
     function createLove() {
       const love = document.createElement('div');
@@ -581,16 +607,16 @@
       love.textContent = loveEmojis[Math.floor(Math.random() * loveEmojis.length)];
       love.style.left = Math.random() * 100 + 'vw';
       love.style.top = '-30px';
-      love.style.fontSize = (18 + Math.random() * 20) + 'px';
+      love.style.fontSize = (20 + Math.random() * 22) + 'px';
       love.style.animationDuration = (5 + Math.random() * 4) + 's';
       love.style.opacity = 0.5 + Math.random() * 0.4;
       loveZone.appendChild(love);
       setTimeout(() => love.remove(), 10000);
     }
 
-    setInterval(createLove, 200);
+    setInterval(createLove, 150);
 
-    // ===================== TAP EFFECT (Instagram Style) =====================
+    // ===================== TAP EFFECT =====================
     const tapZone = document.getElementById('tap-zone');
 
     document.addEventListener('click', function(e) {
@@ -604,7 +630,6 @@
       setTimeout(() => tap.remove(), 700);
     });
 
-    // Touch support for mobile
     document.addEventListener('touchstart', function(e) {
       const touch = e.touches[0];
       const tap = document.createElement('div');
@@ -618,13 +643,13 @@
     });
 
     // ===================== BACKGROUND STARS =====================
-    for (let i = 0; i < 30; i++) {
+    for (let i = 0; i < 35; i++) {
       const star = document.createElement('div');
       star.className = 'gold-star';
       star.style.cssText = `
         position: fixed;
         color: #ffd700;
-        font-size: ${4 + Math.random() * 8}px;
+        font-size: ${3 + Math.random() * 7}px;
         left: ${Math.random() * 100}vw;
         top: ${Math.random() * 100}vh;
         animation-delay: ${Math.random() * 5}s;
@@ -636,8 +661,8 @@
       document.body.appendChild(star);
     }
 
-    console.log(' MFUMO PRO IMESHAANZA!');
-    console.log(' WASHINDI: ' + winners.length);
+    console.log('🌟 MFUMO PRO IMESHAANZA!');
+    console.log('💰 WASHINDI: ' + winners.length);
     console.log('💎 JACKPOT: TZS ' + jackpotAmount.toLocaleString());
   </script>
 </body>
