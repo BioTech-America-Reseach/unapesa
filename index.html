@@ -2,231 +2,643 @@
 <html lang="sw">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MFUMO PRO - VUNA PESA MTANDAONI</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+  <title>VUNA FAIDA NA KAMPUNI ZA BAHATI NASIBU HATA BILA YA KUCHEZA</title>
   
   <!-- Tailwind & Fonts -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800;900&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/lucide@latest"></script>
   
   <style>
-    body { 
-      font-family: 'Plus Jakarta Sans', sans-serif;
-      background-color: #020617;
-      color: white;
+    * {
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    /* Background ya Kifahari */
-    .hero-bg {
-      background: linear-gradient(rgba(2, 6, 23, 0.85), rgba(2, 6, 23, 0.85)), 
-                  url('https://images.unsplash.com/photo-1611974714676-48d611681788?auto=format&fit=crop&q=80&w=2000');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+    body { 
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      color: white;
+      overflow-x: hidden;
+      background: #0a0a1a;
       min-height: 100vh;
     }
 
-    /* Glass Effect (Muonekano wa Pro) */
-    .glass-box {
-      background: rgba(255, 255, 255, 0.03);
-      backdrop-filter: blur(15px);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      border-radius: 24px;
+    /* ===================== STATIC LUXURY BACKGROUND ===================== */
+    .hero-bg {
+      background: linear-gradient(135deg, #0a0a1a 0%, #1a0a2e 30%, #0d1a2d 60%, #1a0a2e 100%);
+      min-height: 100vh;
+      position: relative;
+      background-image: 
+        radial-gradient(ellipse at 20% 50%, rgba(255, 215, 0, 0.03) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(255, 215, 0, 0.02) 0%, transparent 40%),
+        radial-gradient(ellipse at 50% 80%, rgba(255, 215, 0, 0.02) 0%, transparent 50%);
+      background-attachment: fixed;
     }
 
-    /* Animations */
+    /* ===================== LUXURY GOLD BORDER ===================== */
+    .luxury-border {
+      border: 1px solid rgba(255, 215, 0, 0.1);
+      box-shadow: 0 0 60px rgba(255, 215, 0, 0.02);
+    }
+
+    /* ===================== GLASS EFFECT ===================== */
+    .glass-box {
+      background: rgba(255, 255, 255, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 20px;
+    }
+
+    .glass-gold {
+      background: rgba(255, 215, 0, 0.03);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 215, 0, 0.08);
+      border-radius: 20px;
+    }
+
+    /* ===================== ANIMATIONS ===================== */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
+      50% { transform: translateY(-10px); }
     }
     .animate-float { animation: float 4s ease-in-out infinite; }
 
-    @keyframes pulse-green {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.5); }
-      50% { box-shadow: 0 0 40px 10px rgba(34, 197, 94, 0.3); }
+    @keyframes pulse-gold {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(255, 215, 0, 0.4); }
+      50% { box-shadow: 0 0 50px 15px rgba(255, 215, 0, 0.1); }
     }
-    .btn-glow { animation: pulse-green 2s infinite; }
+    .btn-glow { animation: pulse-gold 2s infinite; }
 
-    .money-rain {
-      position: fixed;
-      pointer-events: none;
-      z-index: 1;
-      font-size: 24px;
-      animation: fall linear forwards;
+    @keyframes gold-shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
     }
-    @keyframes fall {
-      to { transform: translateY(110vh) rotate(360deg); }
-    }
-
-    .gradient-text {
-      background: linear-gradient(90deg, #4ade80, #22c55e);
+    .gold-text {
+      background: linear-gradient(90deg, #ffd700, #ffaa00, #ffd700, #ffaa00);
+      background-size: 300% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
+      animation: gold-shimmer 3s linear infinite;
+    }
+
+    @keyframes gradient-shift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* ===================== BEAM EFFECT ===================== */
+    .beam-container {
+      position: relative;
+      overflow: hidden;
+      border-radius: 20px;
+    }
+    .beam {
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: conic-gradient(from 0deg, transparent, rgba(255, 215, 0, 0.03), transparent, rgba(255, 215, 0, 0.03), transparent);
+      animation: rotate-beam 15s linear infinite;
+    }
+    @keyframes rotate-beam {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .beam-content {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ===================== LOVE RAIN (Instagram Style) ===================== */
+    .love-rain {
+      position: fixed;
+      pointer-events: none;
+      z-index: 999;
+      font-size: 28px;
+      animation: love-fall linear forwards;
+      opacity: 0.8;
+    }
+    @keyframes love-fall {
+      0% { 
+        transform: translateY(-20px) scale(0.5) rotate(0deg);
+        opacity: 0;
+      }
+      10% { 
+        opacity: 1;
+        transform: translateY(10px) scale(1.2) rotate(10deg);
+      }
+      90% { 
+        opacity: 1;
+      }
+      100% { 
+        transform: translateY(110vh) scale(0.8) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ===================== WINNERS LIST ===================== */
+    .winners-container {
+      max-height: 380px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 215, 0, 0.2) transparent;
+      -webkit-overflow-scrolling: touch;
+    }
+    .winners-container::-webkit-scrollbar {
+      width: 3px;
+    }
+    .winners-container::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .winners-container::-webkit-scrollbar-thumb {
+      background: rgba(255, 215, 0, 0.2);
+      border-radius: 10px;
+    }
+
+    .winner-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 10px 14px;
+      margin: 5px 0;
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 12px;
+      border-left: 2px solid rgba(255, 215, 0, 0.15);
+      animation: slideIn 0.4s ease-out forwards;
+      opacity: 0;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-20px); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .winner-name {
+      font-weight: 600;
+      color: #f0f0f0;
+      font-size: 0.9rem;
+    }
+    .winner-amount {
+      font-weight: 800;
+      color: #ffd700;
+      font-size: 0.95rem;
+    }
+    .winner-location {
+      color: #9ca3af;
+      font-size: 0.7rem;
+    }
+    .winner-badge {
+      background: rgba(255, 215, 0, 0.1);
+      padding: 2px 10px;
+      border-radius: 20px;
+      font-size: 0.6rem;
+      color: #ffd700;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      white-space: nowrap;
+    }
+
+    /* ===================== LIVE DOT ===================== */
+    .live-dot {
+      display: inline-block;
+      width: 7px;
+      height: 7px;
+      background: #22c55e;
+      border-radius: 50%;
+      animation: pulse-dot 1.5s ease-in-out infinite;
+      margin-right: 6px;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.3; transform: scale(0.7); }
+    }
+
+    /* ===================== STEP CARDS ===================== */
+    .step-card {
+      background: rgba(255, 255, 255, 0.02);
+      border-radius: 14px;
+      padding: 14px 16px;
+      border: 1px solid rgba(255, 255, 255, 0.04);
+      transition: all 0.3s ease;
+    }
+    .step-card:active {
+      transform: scale(0.98);
+      background: rgba(255, 215, 0, 0.03);
+    }
+    .step-number {
+      width: 32px;
+      height: 32px;
+      background: rgba(255, 215, 0, 0.1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.8rem;
+      color: #ffd700;
+      border: 1px solid rgba(255, 215, 0, 0.15);
+      flex-shrink: 0;
+    }
+
+    /* ===================== RESPONSIVE ===================== */
+    @media (max-width: 480px) {
+      .winner-item {
+        padding: 8px 10px;
+        font-size: 0.8rem;
+      }
+      .winner-name { font-size: 0.8rem; }
+      .winner-amount { font-size: 0.8rem; }
+      .winner-badge { font-size: 0.5rem; padding: 1px 8px; }
+      .step-card { padding: 12px 14px; }
+      .hero-title { font-size: 1.8rem; }
+      .jackpot-number { font-size: 2.2rem; }
+      .love-rain { font-size: 22px; }
+    }
+
+    @media (max-width: 380px) {
+      .winner-item { padding: 6px 8px; }
+      .winner-name { font-size: 0.7rem; }
+      .winner-amount { font-size: 0.7rem; }
+      .winner-location { font-size: 0.6rem; }
+      .step-card { padding: 10px 12px; }
+      .step-number { width: 28px; height: 28px; font-size: 0.7rem; }
+    }
+
+    /* ===================== TAP EFFECT ===================== */
+    .tap-effect {
+      position: fixed;
+      pointer-events: none;
+      z-index: 1000;
+      font-size: 40px;
+      animation: tap-pop 0.6s ease-out forwards;
+    }
+    @keyframes tap-pop {
+      0% { transform: scale(0.5); opacity: 1; }
+      100% { transform: scale(1.8); opacity: 0; }
+    }
+
+    /* ===================== GOLD STARS ===================== */
+    .gold-star {
+      color: rgba(255, 215, 0, 0.1);
+      animation: twinkle 3s ease-in-out infinite;
+    }
+    @keyframes twinkle {
+      0%, 100% { opacity: 0.1; }
+      50% { opacity: 0.5; }
     }
   </style>
 </head>
 <body class="hero-bg">
 
-  <!-- Hapa ndipo Pesa Zinadondoka -->
-  <div id="rain-zone"></div>
+  <!-- ===================== LOVE RAIN ===================== -->
+  <div id="love-rain-zone"></div>
 
-  <main class="relative z-10 max-w-xl mx-auto px-5 py-10">
-    
-    <!-- Header/Logo Section -->
-    <header class="text-center mb-12 animate-float">
-      <div class="inline-flex items-center justify-center w-20 h-20 bg-green-500/10 rounded-3xl border border-green-500/30 mb-4 shadow-2xl">
-        <i data-lucide="gem" class="text-green-400 w-10 h-10"></i>
+  <!-- ===================== TAP EFFECT ZONE ===================== -->
+  <div id="tap-zone"></div>
+
+  <main class="relative z-10 max-w-lg mx-auto px-4 py-5">
+
+    <!-- ===================== HEADER ===================== -->
+    <header class="text-center mb-6 animate-float">
+      <div class="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-yellow-500/20 to-amber-500/10 rounded-2xl border border-yellow-500/30 mb-3 shadow-2xl">
+        <i data-lucide="gem" class="text-yellow-400 w-8 h-8"></i>
       </div>
-      <h1 class="text-3xl md:text-4xl font-extrabold uppercase tracking-tight leading-tight">
-        Mfumo wa <span class="gradient-text">Kuvuna Faida</span> Mtandaoni
+      <h1 class="text-2xl md:text-3xl font-extrabold uppercase tracking-tight leading-tight hero-title">
+        VUNA FAIDA NA KAMPUNI ZA<span class="gold-text"> BAHATI NASIBU HATA BILA KUCHEZA</span>
       </h1>
-      <p class="text-gray-400 mt-3 text-xs tracking-[0.2em] font-semibold">PREMIUM EARNING SYSTEM 2024</p>
+      <p class="text-gray-400 mt-1 text-[10px] tracking-[0.15em] font-semibold">IMEANZISHWA TOKA MWAKA 1998 -2026</p>
+      <div class="flex items-center justify-center gap-2 mt-2">
+        <span class="live-dot"></span>
+        <span class="text-green-400 text-[10px] font-bold tracking-widest">LIVE • WATU 2,847 WAMEJIUNGA MWEZI HUU</span>
+      </div>
     </header>
 
-    <!-- Live Profit Counter -->
-    <div class="glass-box p-8 mb-10 text-center relative overflow-hidden border-t-2 border-green-500/50">
-        <p class="text-green-400 text-xs font-bold uppercase tracking-widest mb-4">Pesa zilizovunwa na watumiaji leo:</p>
-        <div id="counter" class="text-4xl md:text-5xl font-black text-white tabular-nums mb-3 tracking-tighter">
-            TZS 12,450,000
+    <!-- ===================== MWONGOZO (Juu Kabla ya Washindi) ===================== -->
+    <div class="beam-container glass-gold p-5 mb-6 luxury-border">
+      <div class="beam"></div>
+      <div class="beam-content">
+        <div class="flex items-center gap-2 border-b border-yellow-500/10 pb-3 mb-4">
+          <i data-lucide="zap" class="text-yellow-400 w-4 h-4"></i>
+          <h2 class="font-extrabold text-sm gold-text uppercase tracking-wider">📌SOMA KWANZA</h2>
         </div>
-        <div class="flex items-center justify-center gap-2 text-green-500/80 text-xs font-medium">
-            <span class="flex h-2 w-2">
-              <span class="animate-ping absolute inline-flex h-2 w-2 rounded-full bg-green-400 opacity-75"></span>
-              <span class="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
-            </span>
-            SYSTEM ONLINE & UPDATING LIVE
+        
+        <div class="space-y-3">
+          <!-- Step 1 -->
+          <div class="step-card flex items-center gap-3">
+            <span class="step-number">1</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-white font-semibold text-sm">BONYEZA KITUFE CHA KUJIUNGA</p>
+              <p class="text-gray-400 text-[10px]">Pata bonasi yako ya TZS 60,000 bure hata bila kucheza</p>
+            </div>
+          </div>
+          
+          <!-- Step 2 -->
+          <div class="step-card flex items-center gap-3">
+            <span class="step-number">2</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-white font-semibold text-sm">JISAJIRI KAMA NDIO MARA YAO YA KWANZA</p>
+              <p class="text-gray-400 text-[10px]">Jaza namba simu na weka lako la nenosiri</p>
+            </div>
+          </div>
+          
+          <!-- Step 3 -->
+          <div class="step-card flex items-center gap-3">
+            <span class="step-number">3</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-white font-semibold text-sm">Baada ya jusajiri utaona BONUS yako ya kwanza 10,000 kisha zinongezwa hadili unavyocheza</p>
+              <p class="text-gray-400 text-[10px]">Tumia AI kuongeza faida hadi 280k+</p>
+            </div>
+          </div>
+          
+          <!-- Step 4 -->
+          <div class="step-card flex items-center gap-3">
+            <span class="step-number">4</span>
+            <div class="flex-1 min-w-0">
+              <p class="text-white font-semibold text-sm">JITAIDI KUTOA PESA UKIANZA KUONA FAIDA IMEONGEZEKA</p>
+              <p class="text-gray-400 text-[10px]">Jiepushe na tamaa maana hizi pesa ni kivutio usicheze sana ukajisahau.</p>
+            </div>
+          </div>
         </div>
+
+        <div class="mt-4 p-3 bg-yellow-500/5 border border-yellow-500/15 rounded-xl">
+          <p class="text-yellow-400/80 text-[9px] font-bold uppercase tracking-wider text-center">
+            ⚡ WATU 1,284 WAMEPATA FAIDA LEO! USICHELEWA ⚡
+          </p>
+        </div>
+      </div>
     </div>
 
-    <!-- MAIN CALL TO ACTION -->
-    <div class="mb-14">
-        <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
-           class="btn-glow block w-full py-6 rounded-2xl bg-gradient-to-r from-green-600 to-emerald-500 text-white font-black text-xl text-center shadow-2xl transition-all active:scale-95">
-           BONYEZA HAPA KUANZA SASA 🚀
-        </a>
-        <p class="text-center text-gray-500 text-[11px] mt-4 uppercase font-bold italic tracking-wide">
-           *Bonyeza link hapo juu kupata Bonus yako ya TZS 60,000/-
+    <!-- ===================== JACKPOT COUNTER ===================== -->
+    <div class="glass-gold p-5 mb-6 text-center luxury-border relative overflow-hidden">
+      <div class="relative z-10">
+        <p class="text-yellow-500/70 text-[10px] font-bold uppercase tracking-[0.15em] mb-1">
+          🏆 KIASI KINACHOENDELEA KUCHOTWA FREE
         </p>
+        <div id="jackpot" class="text-3xl md:text-4xl font-black gold-text">TZS 7,450,000</div>
+        <p class="text-gray-500 text-[8px] mt-1 tracking-widest">MTU AMETOA PESA MDAA HUU</p>
+        <div class="flex justify-center gap-3 mt-2">
+          <span class="text-[9px] text-gray-400">  1,284 wamepata</span>
+          <span class="text-[9px] text-gray-400">💎 Bonasi: 280,000</span>
+        </div>
+      </div>
     </div>
 
-    <!-- DETAILED INSTRUCTIONS (KUELEWEKA KWA KINA) -->
-    <section class="glass-box p-6 md:p-8 space-y-10 mb-12">
-        <div class="flex items-center gap-3 border-b border-white/10 pb-5">
-            <i data-lucide="file-text" class="text-green-400"></i>
-            <h2 class="font-extrabold text-xl">MAELEZO YA KINA (HAKIKISHA UNASOMA)</h2>
+    <!-- ===================== WINNERS LIST ===================== -->
+    <div class="glass-box p-4 mb-6 luxury-border">
+      <div class="flex items-center justify-between border-b border-white/5 pb-2 mb-3">
+        <div class="flex items-center gap-2">
+          <i data-lucide="trophy" class="text-yellow-500 w-4 h-4"></i>
+          <h2 class="font-bold text-xs uppercase tracking-wider text-gray-300">Waliovuna faida na Bangbet leo</h2>
         </div>
+        <span class="text-[8px] text-green-400 font-bold flex items-center gap-1">
+          <span class="live-dot" style="width:5px;height:5px;"></span> LIVE
+        </span>
+      </div>
+      <div id="winnersList" class="winners-container">
+        <!-- Winners inserted by JavaScript -->
+      </div>
+    </div>
 
-        <!-- Step 1 -->
-        <div class="flex gap-5">
-            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">1</div>
-            <div>
-                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Kwanza: Usajili</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Bonyeza kitufe kikubwa cha kijani hapo juu. Utapelekwa kwenye ukurasa wa kampuni. Jaza namba yako ya simu na nenosiri (password) imara. Kumbuka namba yako ndiyo itatumika kukutumia faida yako kupitia M-pesa au Tigo-Pesa.
-                </p>
-            </div>
-        </div>
+    <!-- ===================== MAIN CTA ===================== -->
+    <div class="mb-6">
+      <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
+         class="btn-glow block w-full py-5 rounded-2xl bg-gradient-to-r from-yellow-500 to-amber-500 text-white font-black text-base md:text-lg text-center shadow-2xl transition-all active:scale-95 hover:scale-102 relative overflow-hidden">
+        <span class="relative z-10">🚀 JIUNGE SASA NA ANZA KUVUNA 🚀</span>
+        <span class="absolute inset-0 bg-gradient-to-r from-transparent via-white/15 to-transparent -translate-x-full hover:translate-x-full transition-transform duration-700"></span>
+      </a>
+      <p class="text-center text-gray-500 text-[8px] mt-2 uppercase font-bold italic tracking-wider">
+        *BONASI YAKO YA TZS 60,000 INAKUSUBIRI*
+      </p>
+    </div>
 
-        <!-- Step 2 -->
-        <div class="flex gap-5">
-            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">2</div>
-            <div>
-                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Pili: Pokea Mtaji (60k)</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Ukishamaliza kusajili, ingia kwenye akaunti yako. Chini kabisa kulia bofya kitufe cha <b>'ME'</b>. Utapewa TZS 30,000 ya Sport na TZS 30,000 ya Casino. Hii ni pesa ya bure kabisa ya kuanzia kulingana na mfumo wetu.
-                </p>
-            </div>
-        </div>
+    <!-- ===================== ROTATING PRO TEXT ===================== -->
+    <div class="text-center mb-4">
+      <div class="inline-block animate-float text-lg font-black gold-text">
+      KAMPUNI IMESAJIRI TANZANIA KWA LESENI NAMBA BS823-3838 NI HALALI 
+      </div>
+    </div>
 
-        <!-- Step 3 -->
-        <div class="flex gap-5">
-            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">3</div>
-            <div>
-                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Tatu: Matumizi ya AI</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Tumia pesa hizo za bonus kucheza. Mfumo wetu una AI (Akili Bandia) ambayo imesetiwa kukupa ushindi wa haraka. Ukicheza kwa dakika chache, utaona salio lako likipanda kuelekea <b>TZS 280,000</b>.
-                </p>
-            </div>
-        </div>
-
-        <!-- Step 4 -->
-        <div class="flex gap-5">
-            <div class="shrink-0 w-12 h-12 bg-green-500/20 rounded-2xl flex items-center justify-center border border-green-500/30 text-green-400 font-black text-xl">4</div>
-            <div>
-                <h3 class="text-white font-bold text-lg mb-2 underline decoration-green-500">Hatua ya Nne: Kutoa Pesa</h3>
-                <p class="text-gray-400 text-sm leading-relaxed">
-                    Ukifikisha faida unayoitaka, omba kutoa pesa (Withdraw). Ikiwa mfumo utahitaji uhakiki, weka kiasi kidogo (kama TZS 10,000) kwenye akaunti yako ili kufungua (Unlock) bonus yote. Hapo utaweza kutoa pesa zako zote kwa pamoja.
-                </p>
-            </div>
-        </div>
-
-        <!-- Warning Card -->
-        <div class="bg-red-500/10 border border-red-500/20 p-5 rounded-2xl">
-            <div class="flex items-center gap-2 mb-2">
-                <i data-lucide="alert-circle" class="text-red-500 w-5 h-5"></i>
-                <span class="text-red-500 font-bold text-sm uppercase">Zingatia Hili</span>
-            </div>
-            <p class="text-gray-300 text-xs leading-relaxed">
-                Mfumo huu ni kwa ajili ya kutengeneza faida ya ziada. Tunashauri kutoa faida yako kila unapofikisha kiasi kikubwa. Usicheze kwa tamaa, cheza kwa malengo.
-            </p>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="text-center pb-20">
-        <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
-           class="inline-flex items-center gap-2 text-green-400 font-bold hover:text-green-300 transition-colors uppercase tracking-widest text-sm">
-            NIMEWELEWA, NAANZA SASA 
-            <i data-lucide="chevron-right" class="w-5 h-5"></i>
-        </a>
-        <div class="mt-8 text-gray-600 text-[10px] uppercase tracking-[0.3em]">
-            &copy; 2026 Pesa Pro Tanzania | Secure Connection
-        </div>
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="text-center pb-10">
+      <a href="https://play.bangbet.com/npatc1.html?c=JpLUHh&amp;v=BB2A8" 
+         class="inline-flex items-center gap-2 text-yellow-400/80 font-bold hover:text-yellow-300 transition-colors uppercase tracking-widest text-[10px]">
+        🚀 NIMEWELEWA, NAANZA SASA
+        <i data-lucide="chevron-right" class="w-3 h-3"></i>
+      </a>
+      <div class="mt-4 text-gray-600 text-[8px] uppercase tracking-[0.15em]">
+        &copy; 2026 Pesa Pro Tanzania | Secure Connection
+      </div>
+      <div class="mt-2 flex justify-center gap-2 text-sm">
+        <span class="animate-float">💎</span>
+        <span class="animate-float" style="animation-delay:0.3s;">💰</span>
+        <span class="animate-float" style="animation-delay:0.6s;">⭐</span>
+        <span class="animate-float" style="animation-delay:0.9s;">🔥</span>
+        <span class="animate-float" style="animation-delay:1.2s;">🏆</span>
+      </div>
     </footer>
 
   </main>
 
-  <!-- Scripts -->
+  <!-- ===================== SCRIPTS ===================== -->
   <script>
     // Initialize Icons
     lucide.createIcons();
 
-    // Counter Logic (TZS)
-    let amount = 12450000;
-    const counterEl = document.getElementById('counter');
+    // ===================== JACKPOT COUNTER =====================
+    let jackpotAmount = 12450000;
+    const jackpotEl = document.getElementById('jackpot');
+
+    function updateJackpot() {
+      const addition = Math.floor(Math.random() * 120000) + 20000;
+      jackpotAmount += addition;
+      jackpotEl.textContent = 'TZS ' + jackpotAmount.toLocaleString('en-US');
+      setTimeout(updateJackpot, 2000 + Math.random() * 1500);
+    }
+    updateJackpot();
+
+    // ===================== WINNERS DATA =====================
+    const firstNames = [
+      'James', 'Mary', 'John', 'Patricia', 'Robert', 'Jennifer', 'Michael', 'Linda',
+      'William', 'Elizabeth', 'David', 'Barbara', 'Richard', 'Susan', 'Joseph', 'Jessica',
+      'Thomas', 'Sarah', 'Charles', 'Karen', 'Christopher', 'Nancy', 'Daniel', 'Lisa',
+      'Matthew', 'Betty', 'Anthony', 'Helen', 'Mark', 'Sandra', 'Donald', 'Donna',
+      'Steven', 'Carol', 'Paul', 'Ruth', 'Andrew', 'Sharon', 'Joshua', 'Michelle',
+      'Kenneth', 'Laura', 'Kevin', 'Sarah', 'Brian', 'Kimberly', 'George', 'Deborah',
+      'Timothy', 'Erica', 'Ronald', 'Cynthia', 'Edward', 'Angela', 'Jason', 'Melissa',
+      'Jeffrey', 'Brenda', 'Ryan', 'Amy', 'Jacob', 'Anna', 'Gary', 'Rebecca', 'Nicholas',
+      'Virginia', 'Eric', 'Kathleen', 'Jonathan', 'Pamela', 'Stephen', 'Martha',
+      'Daniel', 'Grace', 'Sam', 'Alice', 'Victor', 'Diana', 'Peter', 'Joy'
+    ];
+
+    const lastNames = [
+      'Mwaipopo', 'Kibona', 'Mushi', 'Mrema', 'Kisanga', 'Msangi', 'Lyimo', 'Ndege',
+      'Kimaro', 'Mlay', 'Mdoe', 'Mhina', 'Kweka', 'Massawe', 'Kileo', 'Mpangala',
+      'Ngowi', 'Mlawa', 'Mkenda', 'Nkya', 'Mtui', 'Kessy', 'Mringo', 'Rweyemamu',
+      'Kalinga', 'Mkandala', 'Nchimbi', 'Lema', 'Mwandu', 'Kafumu', 'Mwaikambo',
+      'Nahoda', 'Mkoma', 'Kihwelo', 'Mnyama', 'Mkumbo', 'Ngozi', 'Mkama', 'Kibiki'
+    ];
+
+    const locations = [
+      'Dar', 'Mwanza', 'Arusha', 'Dodoma', 'Mbeya', 'Morogoro', 'Tanga',
+      'Kilimanjaro', 'Iringa', 'Kagera', 'Shinyanga', 'Tabora', 'Singida',
+      'Mara', 'Kigoma', 'Lindi', 'Mtwara', 'Geita', 'Katavi', 'Njombe'
+    ];
+
+    function getRandomName() {
+      return firstNames[Math.floor(Math.random() * firstNames.length)] + ' ' + 
+             lastNames[Math.floor(Math.random() * lastNames.length)];
+    }
+
+    function getRandomLocation() {
+      return locations[Math.floor(Math.random() * locations.length)];
+    }
+
+    function getRandomAmount() {
+      const amounts = [
+        15000, 25000, 40000, 55000, 70000, 85000, 100000, 120000, 150000, 180000,
+        210000, 250000, 280000, 320000, 350000, 400000, 450000, 500000, 580000, 650000,
+        720000, 800000, 900000, 1000000, 1200000, 1500000
+      ];
+      return amounts[Math.floor(Math.random() * amounts.length)];
+    }
+
+    function getRandomBadge() {
+      const badges = ['VIP', 'ELITE', 'PRO', 'HOT', 'FAST', 'RISING'];
+      return badges[Math.floor(Math.random() * badges.length)];
+    }
+
+    // Generate winners
+    const winners = [];
+    for (let i = 0; i < 65; i++) {
+      winners.push({
+        name: getRandomName(),
+        location: getRandomLocation(),
+        amount: getRandomAmount(),
+        badge: getRandomBadge()
+      });
+    }
+    winners.sort((a, b) => b.amount - a.amount);
+
+    // Display winners
+    const winnersList = document.getElementById('winnersList');
     
-    function updateCounter() {
-      const addition = Math.floor(Math.random() * 85000) + 5000;
-      amount += addition;
-      counterEl.textContent = 'TZS ' + amount.toLocaleString('en-US');
-      setTimeout(updateCounter, 2500 + Math.random() * 2000);
+    winners.forEach((winner, index) => {
+      const div = document.createElement('div');
+      div.className = 'winner-item';
+      div.style.animationDelay = (index * 0.03) + 's';
+      
+      const formattedAmount = 'TZS ' + winner.amount.toLocaleString('en-US');
+      
+      div.innerHTML = `
+        <div class="flex items-center gap-2 flex-1 min-w-0">
+          <span class="text-yellow-500/40 text-[10px] font-bold">#${index + 1}</span>
+          <div class="min-w-0 flex-1">
+            <div class="winner-name truncate">${winner.name}</div>
+            <div class="winner-location truncate">📍 ${winner.location}</div>
+          </div>
+        </div>
+        <div class="flex items-center gap-1 shrink-0">
+          <span class="winner-badge hidden sm:inline">${winner.badge}</span>
+          <span class="winner-amount">${formattedAmount}</span>
+        </div>
+      `;
+      
+      winnersList.appendChild(div);
+    });
+
+    // ===================== UPDATE WINNERS RANDOMLY =====================
+    function updateRandomWinner() {
+      const items = winnersList.querySelectorAll('.winner-item');
+      if (items.length === 0) return;
+      
+      const randomIndex = Math.floor(Math.random() * items.length);
+      const item = items[randomIndex];
+      const amountSpan = item.querySelector('.winner-amount');
+      
+      if (amountSpan) {
+        const currentAmount = parseInt(amountSpan.textContent.replace(/[^\d]/g, ''));
+        const increase = Math.floor(Math.random() * 12000) + 3000;
+        const newAmount = currentAmount + increase;
+        amountSpan.textContent = 'TZS ' + newAmount.toLocaleString('en-US');
+      }
     }
-    updateCounter();
 
-    // Money Rain Logic
-    const rainZone = document.getElementById('rain-zone');
-    const icons = ['💵', '💰', '💸', '💎'];
+    setInterval(updateRandomWinner, 3000 + Math.random() * 2000);
 
-    function createRain() {
-      const drop = document.createElement('div');
-      drop.className = 'money-rain';
-      drop.textContent = icons[Math.floor(Math.random() * icons.length)];
-      drop.style.left = Math.random() * 100 + 'vw';
-      drop.style.top = '-50px';
-      
-      const duration = 4 + Math.random() * 4;
-      drop.style.animationDuration = duration + 's';
-      drop.style.opacity = Math.random();
-      
-      rainZone.appendChild(drop);
-      
-      setTimeout(() => drop.remove(), duration * 1000);
+    // ===================== LOVE RAIN (Instagram Style) =====================
+    const loveZone = document.getElementById('love-rain-zone');
+    const loveEmojis = ['❤️', '💕', '💗', '💖', '💘', '♥️'];
+
+    function createLove() {
+      const love = document.createElement('div');
+      love.className = 'love-rain';
+      love.textContent = loveEmojis[Math.floor(Math.random() * loveEmojis.length)];
+      love.style.left = Math.random() * 100 + 'vw';
+      love.style.top = '-30px';
+      love.style.fontSize = (18 + Math.random() * 20) + 'px';
+      love.style.animationDuration = (5 + Math.random() * 4) + 's';
+      love.style.opacity = 0.5 + Math.random() * 0.4;
+      loveZone.appendChild(love);
+      setTimeout(() => love.remove(), 10000);
     }
 
-    setInterval(createRain, 500);
+    setInterval(createLove, 200);
+
+    // ===================== TAP EFFECT (Instagram Style) =====================
+    const tapZone = document.getElementById('tap-zone');
+
+    document.addEventListener('click', function(e) {
+      const tap = document.createElement('div');
+      tap.className = 'tap-effect';
+      tap.textContent = '❤️';
+      tap.style.left = (e.clientX - 20) + 'px';
+      tap.style.top = (e.clientY - 20) + 'px';
+      tap.style.fontSize = (30 + Math.random() * 30) + 'px';
+      tapZone.appendChild(tap);
+      setTimeout(() => tap.remove(), 700);
+    });
+
+    // Touch support for mobile
+    document.addEventListener('touchstart', function(e) {
+      const touch = e.touches[0];
+      const tap = document.createElement('div');
+      tap.className = 'tap-effect';
+      tap.textContent = '❤️';
+      tap.style.left = (touch.clientX - 20) + 'px';
+      tap.style.top = (touch.clientY - 20) + 'px';
+      tap.style.fontSize = (30 + Math.random() * 30) + 'px';
+      tapZone.appendChild(tap);
+      setTimeout(() => tap.remove(), 700);
+    });
+
+    // ===================== BACKGROUND STARS =====================
+    for (let i = 0; i < 30; i++) {
+      const star = document.createElement('div');
+      star.className = 'gold-star';
+      star.style.cssText = `
+        position: fixed;
+        color: #ffd700;
+        font-size: ${4 + Math.random() * 8}px;
+        left: ${Math.random() * 100}vw;
+        top: ${Math.random() * 100}vh;
+        animation-delay: ${Math.random() * 5}s;
+        pointer-events: none;
+        z-index: 0;
+        opacity: ${0.1 + Math.random() * 0.3};
+      `;
+      star.textContent = '✦';
+      document.body.appendChild(star);
+    }
+
+    console.log(' MFUMO PRO IMESHAANZA!');
+    console.log(' WASHINDI: ' + winners.length);
+    console.log('💎 JACKPOT: TZS ' + jackpotAmount.toLocaleString());
   </script>
 </body>
 </html>
